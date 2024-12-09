@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        function sendPay() {
+
+                  fetch('/Pay', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({paymentInfo:"70000"})
+                    
+                  }).then(response => response.json())
+                    .then(data => {
+                    if (data.status=='created'){
+                      console.log(data)
+                      var options = {
+                                "key": "rzp_test_J4o77Y0gGt9VQK", 
+                                "amount": data.amount, 
+
+                                "currency": "INR",
+                                "name": "Acme Corp",
+                                "description": "Test Transaction",
+                                "image": "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+                                
+
+                                "handler": function (data){
+                                alert(data.razorpay_payment_id);
+                                alert(data.razorpay_order_id);
+                                alert(data.razorpay_signature)
+                                },
+                                prefill: {
+                                name: "",
+                                email: "",
+                                contact: ""
+                                },
+                                notes: {
+                                address: "Razorpay Corporate Office"
+
+                                },
+                                theme: {
+                                color: "#3399cc"
+                                }
+                                };
+                                var rzp1 = new Razorpay(options);
+                                rzp1.on('payment.failed', function (data){
+                                alert(data.error.code);
+                                alert(data.error.description);
+                                alert(data.error.source);
+                                alert(data.error.step);
+                                alert(data.error.reason);
+                                alert(data.error.metadata.order_id);
+                                alert(data.error.metadata.payment_id);
+                                });rzp1.open();
+                                
+                                                    }
+                                                  
+                                                  }
+                                                    )
+                                                      
+                                                  
+                                                }
+    </script>
+</head>
+<body>
+    <button onclick="sendPay()">Place Order</button>
+
+    
+</body>
+</html>

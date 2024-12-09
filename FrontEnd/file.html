@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        iframe{
+            height: 1000px;
+            width: 1000px;
+        }
+        button{
+            padding: 1%;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            font-size: larger;
+            cursor:pointer;
+            border: none;
+        }
+        button:hover{
+            background-color: rgba(0, 0, 255, 0.62);
+        }
+    </style>
+    <script>
+        function f1(){
+            document.getElementById('nnn').src="https://www.programiz.com/c-programming/online-compiler/"
+            console.log(22)
+        }
+        function f2(){
+            document.getElementById('nnn').src="https://www.programiz.com/java-programming/online-compiler/"
+            console.log(22)
+        }
+    </script>
+</head>
+<body>
+    <iframe id="nnn" src="https://www.programiz.com/java-programming/online-compiler/" scrolling="no" style="height: 490px; border: 0px none; width: 955px; margin-top: -110px; margin-left: -54px;"></iframe>
+    <button onclick="f1()">c</button>
+    <button onclick="f2()">java</button>
+
+</body>
+</html>
